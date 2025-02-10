@@ -1,21 +1,14 @@
-arr = list(range(1,12216))
-target = 1781
+def binary_search(arr, query) :
+    lo = 0
+    hi = len(arr) - 1
 
-left = 0
-right = len(arr) - 1
-found = False
+    while lo <= hi :       
+        mid = (lo + hi) // 2
+        if arr[mid] == query :
+            return mid 
+        elif arr[mid] < query :
+            lo = mid + 1            #searches right half
+        else :
+            hi = mid - 1            #searches left half
 
-while left <= right and not found:
-    mid = (left + right) // 2
-    
-    if arr[mid] == target:
-        found = True
-    elif target < arr[mid]:
-        right = mid - 1
-    else:
-        left = mid + 1
-
-if found:
-    print("Target found at index", mid)
-else:
-    print("Target not found")
+    return -1       #if not present returns -1
